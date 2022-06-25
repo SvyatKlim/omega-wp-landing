@@ -1,0 +1,29 @@
+.footer{
+  padding: 20px 0;
+  background-color: $bg;
+  color: $white;
+  .container{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__copyright{
+    margin-bottom: 0;
+    font-family: $WorkSans;
+    font-weight: 400;
+  }
+
+  &__social{
+    a{
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      margin-left: 5px;
+      svg{
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

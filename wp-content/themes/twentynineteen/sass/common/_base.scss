@@ -1,0 +1,83 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $OpenSans;
+  font-size: 16px;
+  color: $text;
+  background-color: $white;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+}
+
+main{
+  flex: 1 0 auto;
+}
+
+footer{
+  flex: 0 0 auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 0 0 31px;
+}
+h4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.45;
+  margin: 0 0 8px;
+  color: $title;
+}
+p{
+  margin: 0 0 16px;
+}
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
+.button{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 32px;
+  min-height: 50px;
+  background-color: $btn;
+  color: $white;
+  border: 0;
+  border-radius: 0;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 700;
+  @media (pointer: fine) {
+    &:hover{
+
+    }
+  }
+ }
+
+@media screen and (max-width: 1250px){
+  .container{
+    max-width: unset;
+    padding-left: 40px ;
+    padding-right: 40px ;
+  }
+}

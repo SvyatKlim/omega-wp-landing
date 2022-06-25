@@ -1,0 +1,238 @@
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding-top: 34px;
+  padding-bottom: 10px;
+  transition: background-color 0.3s ease, top 0.3s ease-out;
+  z-index: 2;
+
+  &.header-fixed {
+    background-color: $bg;
+    top: -24px;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: inline-flex;
+    height: 37px;
+    width: 184px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__nav {
+    &__ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__item {
+      display: inline-flex;
+      margin-left: 28px;
+    }
+
+    &__link {
+      text-transform: uppercase;
+      color: $white;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      @media (pointer: fine) {
+        &:hover {
+          border-color: $white;
+        }
+      }
+    }
+
+    &__icon {
+      position: relative;
+      display: none;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      z-index: 11;
+
+      &::after,
+      &::before {
+        position: absolute;
+        top: 7px;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        margin-left: -10px;
+        background-color: $white;
+        border-radius: 1px;
+        transition: .3s ease-in-out;
+        content: '';
+      }
+
+      &::after {
+        top: 13px;
+      }
+
+
+      &.active {
+
+        &::after,
+        &::before {
+          top: 9px;
+        }
+
+        &::after {
+          transform: rotate(-45deg);
+        }
+
+        &::before {
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    &__logo {
+      height: 24px;
+      width: 120px;
+    }
+
+    .container {
+      align-items: start;
+    }
+
+    &__nav {
+      &__overlay {
+        max-width: 900px;
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.1);
+        z-index: -1;
+        transition: all 0.8s;
+
+        &.open {
+          z-index: 11;
+          display: block;
+          animation: 0.8s ease showNavOverlay;
+          animation-fill-mode: forwards;
+        }
+
+        &.close {
+          display: block;
+          animation: 0.8s ease hideNavOverlay;
+          animation-fill-mode: forwards;
+        }
+      }
+
+      &__aside {
+        position: absolute;
+        right: 0;
+        width: 380px;
+        background-color: $bg;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.38);
+        height: 100%;
+        z-index: 10;
+        padding: 16px 45px;
+        transform: translate(600px);
+        display: flex;
+
+        &.open {
+          animation: 0.8s ease showNavAside;
+          animation-fill-mode: forwards;
+        }
+
+        &.close {
+          animation: 0.8s ease hideNavAside;
+          animation-fill-mode: forwards;
+        }
+      }
+
+      &__icon {
+        display: flex;
+      }
+
+      &__ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__item {
+        margin: 15px 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header__nav__aside {
+    padding: 20px 30px;
+    width: 100vw;
+  }
+
+}
+
+@keyframes showNavOverlay {
+  from {
+    opacity: 0;
+    background-color: transparent;
+  }
+  to {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes hideNavOverlay {
+  from {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  to {
+    opacity: 0;
+    background-color: transparent;
+  }
+}
+
+@keyframes showNavAside {
+  from {
+    display: none;
+    transform: translate(600px);
+  }
+  to {
+    display: block;
+    transform: translate(0);
+  }
+}
+
+@keyframes hideNavAside {
+  from {
+    display: block;
+    transform: translate(0);
+  }
+  to {
+    display: none;
+    transform: translate(600px);
+  }
+}

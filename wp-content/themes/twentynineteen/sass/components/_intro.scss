@@ -1,0 +1,104 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  min-height: 481px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 226px 0 113px;
+
+  .container {
+    display: flex;
+  }
+
+  &__content, &__title {
+    &:before, &:after {
+      content: '';
+      display: block;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      border-radius: 8px;
+    }
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 667px;
+    margin: 20px auto 0;
+    padding: 0 100px;
+    text-align: center;
+
+    p {
+      color: $white;
+      opacity: .8;
+    }
+
+    &:before {
+      width: 32%;
+      right: 0;
+      border-bottom: 1px solid $white;
+      border-right: 1px solid $white;
+      border-bottom-left-radius: 0;
+    }
+
+    &:after {
+      width: 32%;
+      left: 0;
+      border-bottom: 1px solid $white;
+      border-left: 1px solid $white;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+
+  &__title {
+    display: inline-flex;
+    color: $white;
+    margin-top: -20px;
+
+    &:before {
+      width: 20%;
+      right: 0;
+      border-top: 1px solid $white;
+      border-top-left-radius: 0;
+    }
+
+    &:after {
+      width: 20%;
+      left: 0;
+      border-top: 1px solid $white;
+      border-top-right-radius: 0;
+    }
+  }
+
+  &__button {
+    margin-top: 15px;
+    margin-bottom: -25px;
+    transition: background-color 0.3s ease;
+    @media (hover: hover) {
+      &:hover {
+        background-color: $btnHover;
+      }
+    }
+
+  }
+
+  @media screen and (max-width: 576px) {
+    &__title, &__content {
+      &::after {
+        width: 10%;
+      }
+
+      &::before {
+        width: 10%;
+      }
+    }
+    &__content {
+      padding: 0 20px;
+    }
+  }
+}

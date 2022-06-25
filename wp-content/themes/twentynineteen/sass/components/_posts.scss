@@ -1,0 +1,141 @@
+.posts {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: flex;
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  .card {
+    width: calc(25% - 24px);
+    margin: 15px 12px;
+  }
+}
+
+.card {
+  z-index: 0;
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: $white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    min-height: 100%;
+    padding-bottom: 58px;
+    transition: all 0.3s ease;
+  }
+
+  &.open {
+    z-index: 1;
+
+    .arrow {
+      transform: rotate(180deg);
+    }
+
+    .card__btn {
+      &--less {
+        display: block;
+      }
+
+      &--more {
+        display: none;
+      }
+    }
+  }
+
+  &__image {
+    display: flex;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    padding: 24px 21px 0 24px;
+  }
+
+  &__description {
+    &.hidden-content {
+      display: none;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    margin-top: 12px;
+    padding: 0 24px 24px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.2;
+    color: $blue;
+    transition: color 0.3s linear;
+
+    .arrow {
+      margin-right: 8px;
+      transition: transform 0.3s cubic-bezier(.17, .67, .83, .67);
+
+      path {
+        transition: fill 0.3s linear;
+      }
+    }
+
+    &--less {
+      display: none;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: $blueHover;
+
+        .arrow {
+          path {
+            fill: $blueHover;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 1250px) {
+  .posts {
+    .card {
+      width: calc(33.3% - 24px);
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .posts {
+    .card {
+      width: calc(50% - 24px);
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .posts {
+    .card {
+      width: 100%;
+      margin: 20px 0;
+    }
+  }
+}
